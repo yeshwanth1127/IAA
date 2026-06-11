@@ -1,0 +1,36 @@
+.course-hero {
+  padding: 120px 0 64px;
+  background: var(--gray-50);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.course-hero .badge {
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.course-hero__title {
+  margin: 12px 0 16px;
+  max-width: 700px;
+}
+
+.course-hero__subtitle {
+  font-size: 1.1rem;
+  color: var(--gray-500);
+  max-width: 600px;
+  margin-bottom: 28px;
+}
+
+.course-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.course-hero__schedule {
+  background: var(--peach);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}

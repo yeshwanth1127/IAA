@@ -1,0 +1,357 @@
+/* Two-column section split */
+.home-split {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.home-split__left {
+  position: sticky;
+  top: 96px;
+}
+
+.home-split__left .badge {
+  margin-bottom: 14px;
+  display: inline-block;
+}
+
+.home-split__left h2 {
+  margin-bottom: 14px;
+}
+
+.home-split__left p {
+  font-size: 0.95rem;
+  color: var(--gray-500);
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .home-split {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .home-split__left {
+    position: static;
+  }
+}
+
+/* Hero */
+.hero {
+  padding: 130px 0 80px;
+  background: #ffffff;
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.hero__heading {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.hero__heading-line {
+  display: block !important;
+}
+
+.hero__content .badge { margin-bottom: 20px; }
+
+.hero__desc {
+  font-size: 1.05rem;
+  color: var(--gray-500);
+  max-width: 520px;
+  margin-bottom: 32px;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Hero visual */
+.hero__visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero__gif {
+  width: 100%;
+  max-width: 420px;
+  border-radius: var(--radius-lg);
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hero__gif {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
+/* Stats Bar */
+.stats-bar {
+  background: var(--gray-900);
+  padding: 28px 0;
+  overflow: hidden;
+}
+
+.stats-bar__track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+.stats-bar__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px 56px;
+  white-space: nowrap;
+  position: relative;
+}
+
+.stats-bar__value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stats-bar__label {
+  font-size: 0.75rem;
+  color: var(--gray-400);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.stats-bar__sep {
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--peach);
+  font-size: 0.6rem;
+  opacity: 0.6;
+}
+
+/* Section header */
+.section-header {
+  max-width: 540px;
+  margin-bottom: 48px;
+}
+
+.section-header .badge { margin-bottom: 12px; }
+.section-header h2 { margin-bottom: 12px; }
+.section-header p { font-size: 1rem; }
+
+/* Courses Grid */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.course-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.course-card:hover {
+  border-color: var(--gray-400);
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+
+.course-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.course-card__number {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--gray-400);
+  letter-spacing: 0.1em;
+}
+
+.course-card__meta {
+  display: flex;
+  gap: 6px;
+}
+
+.course-card__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-top: 4px;
+}
+
+.course-card__desc {
+  font-size: 0.9rem;
+  color: var(--gray-500);
+  line-height: 1.6;
+}
+
+.course-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.course-card__arrow {
+  font-size: 0.825rem;
+  font-weight: 500;
+  color: var(--gray-500);
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid var(--gray-100);
+  transition: color 0.15s;
+}
+
+.course-card:hover .course-card__arrow {
+  color: var(--gray-900);
+}
+
+/* Why grid */
+.why-card {
+  padding: 28px;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.why-card:hover {
+  box-shadow: var(--shadow);
+  border-color: var(--gray-300);
+}
+
+.why-card__icon {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--gray-700);
+  flex-shrink: 0;
+}
+
+.why-card h4 {
+  margin-bottom: 8px;
+  color: var(--gray-900);
+}
+
+.why-card p {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+/* Skills */
+.skills-section { background: var(--gray-50); }
+
+.skills-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+}
+
+.skills-col h4 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gray-500);
+  margin-bottom: 16px;
+}
+
+.skills-col ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skills-col li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: var(--gray-700);
+}
+
+.check {
+  color: var(--gray-400);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* CTA */
+.cta-section {
+  background: var(--gray-900);
+  padding: 80px 0;
+  text-align: center;
+}
+
+.cta-section h2 {
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.cta-section p {
+  color: var(--gray-400);
+  max-width: 480px;
+  margin: 0 auto 32px;
+}
+
+.cta-section__actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-section__outline {
+  border-color: var(--gray-600);
+  color: var(--white);
+}
+
+.cta-section__outline:hover {
+  background: var(--gray-800);
+  border-color: var(--gray-400);
+}
+
+@media (max-width: 900px) {
+  .hero__inner { grid-template-columns: 1fr; gap: 40px; }
+  .hero__visual { display: none; }
+  .courses-grid { grid-template-columns: 1fr; }
+  .skills-columns { grid-template-columns: 1fr; padding: 28px; }
+}
+
+@media (max-width: 600px) {
+  .hero { padding: 100px 0 56px; }
+
+}
