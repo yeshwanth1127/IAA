@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
-import { useRef, useEffect } from 'react';
-import { ScaleIcon, TargetIcon, WrenchIcon, ClipboardIcon, MonitorIcon, BarChartIcon } from '../components/Icons';
-import SplitText from '../components/SplitText';
-import heroGif from '../assets/dd2f98f2-1161-11ee-9d60-9b7172fc3fd5.gif';
+import { ScaleIcon, TargetIcon, WrenchIcon, ClipboardIcon, MonitorIcon, BarChartIcon, CheckIcon, ArrowRightIcon } from '../components/Icons';
+import Reveal from '../components/Reveal';
 import './Home.css';
 
 const courses = [
@@ -85,94 +83,40 @@ const whyIAA = [
 ];
 
 export default function Home() {
-  const statsTrackRef = useRef(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const track = statsTrackRef.current;
-      if (!track) return;
-      const section = track.closest('.stats-bar');
-      const rect = section.getBoundingClientRect();
-      const progress = (window.innerHeight / 2 - rect.top) / (window.innerHeight + rect.height);
-      track.style.transform = `translateX(${(progress - 0.5) * -220}px)`;
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <div className="home">
       {/* Hero */}
       <section className="hero">
-        <div className="container hero__inner">
+        <div className="container">
           <div className="hero__content">
-            <h1 className="hero__heading">
-              <SplitText
-                text="Practical Training for"
-                tag="span"
-                className="hero__heading-line"
-                delay={60}
-                duration={0.8}
-                ease="power3.out"
-                splitType="chars"
-                from={{ opacity: 0, y: 40 }}
-                to={{ opacity: 1, y: 0 }}
-                threshold={0.1}
-                rootMargin="0px"
-                textAlign="left"
-              />
-              <SplitText
-                text="Commerce Graduates"
-                tag="span"
-                className="hero__heading-line"
-                delay={60}
-                duration={0.8}
-                ease="power3.out"
-                splitType="chars"
-                from={{ opacity: 0, y: 40 }}
-                to={{ opacity: 1, y: 0 }}
-                threshold={0.1}
-                rootMargin="0px"
-                textAlign="left"
-              />
-            </h1>
-            <p className="hero__desc">
-              <SplitText
-                text="Job-ready courses in Labour Laws, GST, TDS, and Bookkeeping in Tally Prime. Learn what employers actually need — from payroll compliance to return filing to financial reporting."
-                tag="span"
-                splitType="words"
-                delay={35}
-                duration={0.55}
-                ease="power2.out"
-                from={{ opacity: 0, y: 14 }}
-                to={{ opacity: 1, y: 0 }}
-                threshold={0.1}
-                rootMargin="0px"
-                textAlign="left"
-              />
-            </p>
-            <div className="hero__actions">
-              <Link to="/bookkeeping" className="btn btn-primary">Explore Courses</Link>
-              <Link to="/about" className="btn btn-outline">About IAA</Link>
-            </div>
+            <Reveal>
+              <span className="kicker">Indian Academy of Accounts</span>
+            </Reveal>
+            <Reveal delay={60}>
+              <h1 className="hero__heading">Practical Training for<br />Commerce Graduates</h1>
+            </Reveal>
+            <Reveal delay={120}>
+              <p className="hero__desc">
+                Job-ready courses in Labour Laws, GST, TDS, and Bookkeeping in Tally Prime. Learn what employers actually need — from payroll compliance to return filing to financial reporting.
+              </p>
+            </Reveal>
+            <Reveal delay={180}>
+              <div className="hero__actions">
+                <Link to="/bookkeeping" className="btn btn-primary">Explore Courses</Link>
+                <Link to="/about" className="btn btn-outline">About IAA</Link>
+              </div>
+            </Reveal>
           </div>
-          <div className="hero__visual">
-            <img src={heroGif} alt="" className="hero__gif" />
-          </div>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="stats-bar">
-        <div className="stats-bar__track" ref={statsTrackRef}>
-          {[...stats, ...stats, ...stats, ...stats].map((s, i) => (
-            <div key={i} className="stats-bar__item">
-              <span className="stats-bar__value">{s.value}</span>
-              <span className="stats-bar__label">{s.label}</span>
-              <span className="stats-bar__sep" aria-hidden="true">✦</span>
+          <Reveal delay={240}>
+            <div className="hero__facts">
+              {stats.map(s => (
+                <div key={s.label} className="hero__fact">
+                  <span className="hero__fact-value">{s.value}</span>
+                  <span className="hero__fact-label">{s.label}</span>
+                </div>
+              ))}
             </div>
-          ))}
+          </Reveal>
         </div>
       </section>
 
@@ -180,13 +124,13 @@ export default function Home() {
       <section className="section" id="courses">
         <div className="container">
           <div className="home-split">
-            <div className="home-split__left">
-              <span className="badge">Curriculum</span>
+            <Reveal className="home-split__left">
+              <span className="kicker">Curriculum</span>
               <h2>Four Core Training Programs</h2>
               <p>Each program is structured as a standalone training with clear objectives, practical exercises, and a skills checklist.</p>
-            </div>
+            </Reveal>
             <div className="home-split__right">
-              <div className="courses-grid">
+              <Reveal stagger className="courses-grid">
                 {courses.map(c => (
                   <Link to={c.path} key={c.path} className="course-card">
                     <div className="course-card__head">
@@ -202,11 +146,11 @@ export default function Home() {
                       {c.tags.map(t => <span key={t} className="tag">{t}</span>)}
                     </div>
                     <div className="course-card__arrow">
-                      View Course →
+                      View Course <ArrowRightIcon size={14} />
                     </div>
                   </Link>
                 ))}
-              </div>
+              </Reveal>
             </div>
           </div>
         </div>
@@ -218,13 +162,13 @@ export default function Home() {
       <section className="section" id="why">
         <div className="container">
           <div className="home-split">
-            <div className="home-split__left">
-              <span className="badge">Why IAA</span>
+            <Reveal className="home-split__left">
+              <span className="kicker">Why IAA</span>
               <h2>Training Built Around Real Work</h2>
               <p>We focus on what you will actually do on the job — not theory for the sake of exams.</p>
-            </div>
+            </Reveal>
             <div className="home-split__right">
-              <div className="grid-3 why-grid">
+              <Reveal stagger className="grid-3 why-grid">
                 {whyIAA.map(w => (
                   <div key={w.title} className="why-card">
                     <w.Icon size={22} className="why-card__icon" />
@@ -232,7 +176,7 @@ export default function Home() {
                     <p>{w.desc}</p>
                   </div>
                 ))}
-              </div>
+              </Reveal>
             </div>
           </div>
         </div>
@@ -243,17 +187,17 @@ export default function Home() {
       {/* Skills Preview */}
       <section className="section skills-section">
         <div className="container">
-          <div className="section-header">
-            <span className="badge">Skills Gained</span>
+          <Reveal className="section-header">
+            <span className="kicker">Skills Gained</span>
             <h2>What You Will Be Able to Do</h2>
             <p>Across all four programs, you build a complete toolkit for accounting and compliance work.</p>
-          </div>
-          <div className="skills-columns">
+          </Reveal>
+          <Reveal stagger className="skills-columns">
             <div className="skills-col">
               <h4>Compliance</h4>
               <ul>
                 {['PF Registration & ECR Filing','ESI Registration & Filing','GST Return Filing (GSTR-1 & 3B)','TDS Deduction & Return Filing','Professional Tax Compliance','Bonus & Gratuity Calculation','Labour Law Audit Support','Contract Labour Compliance'].map(s => (
-                  <li key={s}><span className="check">✓</span> {s}</li>
+                  <li key={s}><CheckIcon size={14} className="check" /> {s}</li>
                 ))}
               </ul>
             </div>
@@ -261,7 +205,7 @@ export default function Home() {
               <h4>Software & Portals</h4>
               <ul>
                 {['Tally Prime — Full Bookkeeping','GST Portal Navigation','TRACES & Income Tax Portal','PF & ESI Portals','E-Invoice Portal (IRN)','E-Way Bill Portal','Excel for Payroll & Reconciliation','Challan 281 Preparation'].map(s => (
-                  <li key={s}><span className="check">✓</span> {s}</li>
+                  <li key={s}><CheckIcon size={14} className="check" /> {s}</li>
                 ))}
               </ul>
             </div>
@@ -269,11 +213,11 @@ export default function Home() {
               <h4>Accounting & Audit</h4>
               <ul>
                 {['Journal Entries & Ledger Scrutiny','Trial Balance Preparation','P&L and Balance Sheet','Bank Reconciliation','GST Reconciliation (GSTR-2B)','TDS Reconciliation with Form 26AS','Year-End Accounting & Closing','Audit Documentation & Support'].map(s => (
-                  <li key={s}><span className="check">✓</span> {s}</li>
+                  <li key={s}><CheckIcon size={14} className="check" /> {s}</li>
                 ))}
               </ul>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import CourseHero from '../components/CourseHero';
-import ScrollStack, { ScrollStackItem } from '../components/ScrollStack';
+import ModuleTimeline from '../components/ModuleTimeline';
+import { CheckIcon, ArrowRightIcon } from '../components/Icons';
 import './CoursePage.css';
 
 const accountTypes = [
@@ -103,7 +104,7 @@ export default function Bookkeeping() {
                 </div>
                 <div className="example-box" style={{marginBottom:'24px'}}>
                   <h4>Example</h4>
-                  <p>Cash ₹1,00,000 = Nil Liabilities + Capital ₹1,00,000 ✓</p>
+                  <p>Cash ₹1,00,000 = Nil Liabilities + Capital ₹1,00,000</p>
                 </div>
                 <h3 style={{fontSize:'1rem',marginBottom:'12px'}}>Golden Rules of Accounting</h3>
                 <div className="table-wrap">
@@ -198,28 +199,7 @@ export default function Bookkeeping() {
               {/* All 16 Modules */}
               <section className="course-section">
                 <h2>All 16 Modules</h2>
-                <ScrollStack
-                  className="window-mode"
-                  useWindowScroll={true}
-                  itemDistance={80}
-                  itemScale={0.018}
-                  itemStackDistance={20}
-                  stackPosition="18%"
-                  scaleEndPosition="12%"
-                  baseScale={0.9}
-                  blurAmount={0.6}
-                >
-                  {modules.map(m => (
-                    <ScrollStackItem key={m.n}>
-                      <div className="mod-stack-inner">
-                        <span className="mod-stack-num">{m.n}</span>
-                        <div className="mod-stack-divider" />
-                        <h4 className="mod-stack-title">{m.title}</h4>
-                        <p className="mod-stack-desc">{m.desc}</p>
-                      </div>
-                    </ScrollStackItem>
-                  ))}
-                </ScrollStack>
+                <ModuleTimeline modules={modules} />
               </section>
 
               {/* Reports */}
@@ -276,7 +256,7 @@ export default function Bookkeeping() {
                 <h4>Accounting Skills</h4>
                 <ul className="skill-tags">
                   {['Journal Entries','Ledger Scrutiny','Trial Balance Preparation','P&L Statement Reading','Balance Sheet Analysis'].map(s => (
-                    <li key={s}><span className="check">✓</span>{s}</li>
+                    <li key={s}><CheckIcon size={13} className="check" />{s}</li>
                   ))}
                 </ul>
               </div>
@@ -285,7 +265,7 @@ export default function Bookkeeping() {
                 <h4>Tally Skills</h4>
                 <ul className="skill-tags">
                   {['Company Creation','Ledger Creation','Voucher Posting','GST Setup & Entries','TDS Accounting','Bank Reconciliation','GST Return Data Verification'].map(s => (
-                    <li key={s}><span className="check">✓</span>{s}</li>
+                    <li key={s}><CheckIcon size={13} className="check" />{s}</li>
                   ))}
                 </ul>
               </div>
@@ -294,16 +274,16 @@ export default function Bookkeeping() {
                 <h4>Professional Skills</h4>
                 <ul className="skill-tags">
                   {['Excel for Accounts','GST Portal Navigation','Vendor Reconciliation','Audit Support','Documentation & Records'].map(s => (
-                    <li key={s}><span className="check">✓</span>{s}</li>
+                    <li key={s}><CheckIcon size={13} className="check" />{s}</li>
                   ))}
                 </ul>
               </div>
 
               <div className="sidebar-nav">
                 <p>Other Courses</p>
-                <Link to="/labour-laws">Labour Laws →</Link>
-                <Link to="/gst">GST →</Link>
-                <Link to="/tds">TDS →</Link>
+                <Link to="/labour-laws">Labour Laws <ArrowRightIcon size={13} /></Link>
+                <Link to="/gst">GST <ArrowRightIcon size={13} /></Link>
+                <Link to="/tds">TDS <ArrowRightIcon size={13} /></Link>
               </div>
             </aside>
 

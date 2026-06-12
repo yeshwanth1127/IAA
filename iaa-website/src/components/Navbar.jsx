@@ -22,10 +22,14 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handler);
   }, []);
 
-  useEffect(() => {
+  // Close menus when the route changes (state adjustment during render,
+  // per https://react.dev/learn/you-might-not-need-an-effect)
+  const [prevPathname, setPrevPathname] = useState(location.pathname);
+  if (prevPathname !== location.pathname) {
+    setPrevPathname(location.pathname);
     setMenuOpen(false);
     setDropdownOpen(false);
-  }, [location]);
+  }
 
   return (
     <header className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>

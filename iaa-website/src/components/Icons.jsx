@@ -141,3 +141,20 @@ export function CheckCircleIcon({ size = 20, className }) {
     </svg>
   );
 }
+
+export function CheckIcon({ size = 20, className }) {
+  return (
+    <svg {...props} width={size} height={size} className={className}>
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+  );
+}
+
+export function ArrowRightIcon({ size = 20, className }) {
+  return (
+    <svg {...props} width={size} height={size} className={className}>
+      <line x1="5" y1="12" x2="19" y2="12" />
+      <polyline points="12 5 19 12 12 19" />
+    </svg>
+  );
+}

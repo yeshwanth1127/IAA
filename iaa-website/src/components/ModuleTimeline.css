@@ -1,144 +1,35 @@
-.mod-timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+.module-list {
+  border-top: 1px solid var(--gray-200);
 }
 
-/* --- Each item row --- */
-.mod-timeline__item {
+.module-row {
   display: flex;
   gap: 20px;
-  align-items: flex-start;
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+  padding: 20px 8px;
+  border-bottom: 1px solid var(--gray-200);
+  transition: background-color var(--transition);
 }
 
-.mod-timeline__item.mod-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* --- Left column --- */
-.mod-timeline__left {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-shrink: 0;
-  width: 40px;
-}
-
-/* Dot circle */
-.mod-timeline__dot {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--white);
-  border: 2px solid var(--gray-200);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
-  position: relative;
-  z-index: 1;
-}
-
-.mod-timeline__dot span {
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: var(--gray-500);
-  letter-spacing: 0.04em;
-  transition: color 0.3s;
-}
-
-.mod-timeline__item.mod-visible .mod-timeline__dot {
-  border-color: var(--peach);
+.module-row:hover {
   background: var(--gray-50);
 }
 
-.mod-timeline__item.mod-visible .mod-timeline__dot span {
-  color: var(--peach);
-}
-
-/* Connector line */
-.mod-timeline__line {
-  width: 2px;
-  flex: 1;
-  min-height: 32px;
-  background: var(--gray-200);
-  transform-origin: top;
-  transform: scaleY(0);
-  transition: transform 0.45s ease-out 0.35s;
-  margin: 2px 0;
-}
-
-.mod-timeline__line.mod-line-grow {
-  transform: scaleY(1);
-}
-
-/* --- Card --- */
-.mod-timeline__card {
-  flex: 1;
-  background: var(--white);
-  border: 1.5px solid var(--gray-200);
-  border-radius: var(--radius-lg);
-  padding: 18px 22px;
-  margin-bottom: 8px;
-  cursor: default;
-  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
-}
-
-.mod-timeline__item.mod-visible .mod-timeline__card {
-  border-color: var(--gray-200);
-}
-
-.mod-timeline__card:hover {
-  border-color: var(--peach);
-  box-shadow: 0 4px 16px rgba(100,40,0,0.09);
-  transform: translateX(4px);
-}
-
-.mod-timeline__title {
-  font-size: 0.92rem;
+.module-row__num {
+  flex-shrink: 0;
+  width: 48px;
+  font-size: 0.8rem;
   font-weight: 600;
-  color: var(--gray-900);
-  margin-bottom: 6px;
-  line-height: 1.35;
-}
-
-.mod-timeline__desc {
-  font-size: 0.845rem;
-  color: var(--gray-500);
+  color: var(--gray-400);
+  font-variant-numeric: tabular-nums;
   line-height: 1.6;
-  margin: 0;
 }
 
-/* Hover: title turns orange */
-.mod-timeline__card:hover .mod-timeline__title {
-  color: var(--peach);
+.module-row__body h4 {
+  color: var(--gray-900);
+  margin-bottom: 4px;
 }
 
-/* Active dot pulse when hovered card */
-.mod-timeline__item:has(.mod-timeline__card:hover) .mod-timeline__dot {
-  background: var(--peach);
-  border-color: var(--peach);
-  box-shadow: 0 0 0 4px rgba(240,85,0,0.15);
-}
-
-.mod-timeline__item:has(.mod-timeline__card:hover) .mod-timeline__dot span {
-  color: #fff;
-}
-
-@media (max-width: 600px) {
-  .mod-timeline__card {
-    padding: 14px 16px;
-  }
-  .mod-timeline__dot {
-    width: 32px;
-    height: 32px;
-  }
-  .mod-timeline__left {
-    width: 32px;
-  }
+.module-row__body p {
+  font-size: 0.9rem;
+  color: var(--gray-500);
 }

@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import ClickSpark from './components/ClickSpark';
 import Home from './pages/Home';
 import LabourLaws from './pages/LabourLaws';
 import GST from './pages/GST';
@@ -42,16 +41,7 @@ function Layout() {
 export default function App() {
   return (
     <BrowserRouter>
-      <ClickSpark
-        sparkColor="#F05500"
-        sparkSize={14}
-        sparkRadius={22}
-        sparkCount={8}
-        duration={500}
-        easing="ease-out"
-      >
-        <Layout />
-      </ClickSpark>
+      <Layout />
     </BrowserRouter>
   );
 }

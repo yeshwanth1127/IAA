@@ -1,16 +1,15 @@
 .course-hero {
-  padding: 120px 0 64px;
+  padding: 140px 0 72px;
   background: var(--gray-50);
   border-bottom: 1px solid var(--gray-200);
 }
 
-.course-hero .badge {
-  margin-bottom: 20px;
-  display: inline-block;
+.course-hero .kicker {
+  margin-bottom: 16px;
 }
 
 .course-hero__title {
-  margin: 12px 0 16px;
+  margin-bottom: 16px;
   max-width: 700px;
 }
 
@@ -24,13 +23,15 @@
 .course-hero__meta {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 8px;
 }
 
 .course-hero__schedule {
-  background: var(--peach);
-  color: #fff;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--gray-600);
+  margin-left: 8px;
 }

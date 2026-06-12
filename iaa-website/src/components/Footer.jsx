@@ -6,8 +6,8 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer__inner">
         <div className="footer__brand">
-          <div className="footer__logo">IAA</div>
-          <p>Indian Academy of Accounts — empowering commerce graduates with practical skills in accounting, taxation, and compliance.</p>
+          <div className="footer__wordmark">Indian Academy of Accounts</div>
+          <p>Empowering commerce graduates with practical skills in accounting, taxation, and compliance.</p>
         </div>
 
         <div className="footer__col">

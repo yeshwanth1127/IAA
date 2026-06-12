@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { BookIcon, ShieldIcon, LaptopIcon, TrendingUpIcon } from '../components/Icons';
+import { BookIcon, ShieldIcon, LaptopIcon, TrendingUpIcon, ArrowRightIcon } from '../components/Icons';
+import Reveal from '../components/Reveal';
 import './About.css';
 
 const pillars = [
@@ -21,27 +22,31 @@ export default function About() {
     <div className="about-page">
       <section className="about-hero">
         <div className="container">
-          <span className="badge">About Us</span>
-          <h1>Indian Academy of Accounts</h1>
-          <p>We train commerce graduates to be job-ready in accounting, taxation, and compliance — with practical curriculum aligned to real workplace requirements.</p>
+          <Reveal>
+            <span className="kicker">About Us</span>
+            <h1>Indian Academy of Accounts</h1>
+          </Reveal>
+          <Reveal delay={60}>
+            <p>We train commerce graduates to be job-ready in accounting, taxation, and compliance — with practical curriculum aligned to real workplace requirements.</p>
+          </Reveal>
         </div>
       </section>
 
       <section className="section">
         <div className="container">
           <div className="about-intro">
-            <div className="about-intro__text">
+            <Reveal className="about-intro__text">
               <h2>Our Mission</h2>
               <p>Indian Academy of Accounts (IAA) was founded with one goal: bridge the gap between commerce education and what employers need on day one.</p>
               <p style={{marginTop:'12px'}}>Commerce graduates often finish their degrees with strong theoretical knowledge but limited practical exposure to the tools and processes they will encounter immediately in the workplace — PF portals, GST returns, TDS sections, Tally Prime. IAA fills that gap.</p>
               <p style={{marginTop:'12px'}}>Our four specialized programs cover Labour Laws, GST, TDS, and Bookkeeping in Tally Prime — delivered by practitioners, structured around real workflows, and assessed through practical exercises.</p>
-            </div>
-            <div className="about-intro__stats">
+            </Reveal>
+            <Reveal stagger className="about-intro__stats">
               <div className="about-stat"><span className="about-stat__num">4</span><span>Specialized Courses</span></div>
               <div className="about-stat"><span className="about-stat__num">64+</span><span>Training Modules</span></div>
               <div className="about-stat"><span className="about-stat__num">8 Days</span><span>Total Training</span></div>
               <div className="about-stat"><span className="about-stat__num">100%</span><span>Practical Focus</span></div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -50,11 +55,11 @@ export default function About() {
 
       <section className="section">
         <div className="container">
-          <div className="section-header">
-            <span className="badge">Our Approach</span>
+          <Reveal className="section-header">
+            <span className="kicker">Our Approach</span>
             <h2>How We Teach</h2>
-          </div>
-          <div className="grid-2">
+          </Reveal>
+          <Reveal stagger className="grid-2">
             {pillars.map(p => (
               <div key={p.title} className="pillar-card">
                 <p.Icon size={22} className="pillar-card__icon" />
@@ -64,7 +69,7 @@ export default function About() {
                 </div>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -72,21 +77,21 @@ export default function About() {
 
       <section className="section" style={{background:'var(--gray-50)'}}>
         <div className="container">
-          <div className="section-header">
-            <span className="badge">Programs</span>
+          <Reveal className="section-header">
+            <span className="kicker">Programs</span>
             <h2>Our Four Courses</h2>
-          </div>
-          <div className="about-courses">
+          </Reveal>
+          <Reveal stagger className="about-courses">
             {courses.map(c => (
               <Link key={c.path} to={c.path} className="about-course-row">
                 <span className="about-course-num">{c.num}</span>
                 <span className="about-course-title">{c.title}</span>
                 <span className="tag">{c.days} Days</span>
                 <span className="tag">{c.modules} Modules</span>
-                <span className="about-course-arrow">→</span>
+                <span className="about-course-arrow"><ArrowRightIcon size={14} /></span>
               </Link>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 

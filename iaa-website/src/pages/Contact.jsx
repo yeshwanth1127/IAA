@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { MailIcon, PhoneIcon, ClockIcon, CheckCircleIcon } from '../components/Icons';
+import { MailIcon, PhoneIcon, ClockIcon, CheckCircleIcon, ArrowRightIcon } from '../components/Icons';
+import Reveal from '../components/Reveal';
 import './Contact.css';
 
 const courses = [
@@ -25,9 +26,13 @@ export default function Contact() {
     <div className="contact-page">
       <section className="contact-hero">
         <div className="container">
-          <span className="badge">Enroll / Contact</span>
-          <h1>Get in Touch</h1>
-          <p>Interested in enrolling or have a question? Fill in the form and our team will get back to you.</p>
+          <Reveal>
+            <span className="kicker">Enroll / Contact</span>
+            <h1>Get in Touch</h1>
+          </Reveal>
+          <Reveal delay={60}>
+            <p>Interested in enrolling or have a question? Fill in the form and our team will get back to you.</p>
+          </Reveal>
         </div>
       </section>
 
@@ -35,7 +40,7 @@ export default function Contact() {
         <div className="container">
           <div className="contact-layout">
 
-            <div className="contact-form-wrap">
+            <Reveal className="contact-form-wrap">
               {submitted ? (
                 <div className="success-box">
                   <span className="success-icon"><CheckCircleIcon size={28} /></span>
@@ -79,9 +84,9 @@ export default function Contact() {
                   <button type="submit" className="btn btn-primary" style={{width:'100%',justifyContent:'center',padding:'14px'}}>Submit Enquiry</button>
                 </form>
               )}
-            </div>
+            </Reveal>
 
-            <div className="contact-info">
+            <Reveal delay={80} className="contact-info">
               <div className="contact-info-card">
                 <h4>Contact Details</h4>
                 <ul>
@@ -113,7 +118,7 @@ export default function Contact() {
                 <h4>Available Courses</h4>
                 <ul className="course-list">
                   {courses.slice(0, 4).map(c => (
-                    <li key={c}><span>→</span>{c}</li>
+                    <li key={c}><span><ArrowRightIcon size={12} /></span>{c}</li>
                   ))}
                 </ul>
               </div>
@@ -122,7 +127,7 @@ export default function Contact() {
                 <p className="info-highlight__label">Training Format</p>
                 <p>Classroom and online sessions available. Batch sizes kept small for maximum practical interaction.</p>
               </div>
-            </div>
+            </Reveal>
 
           </div>
         </div>

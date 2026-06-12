@@ -46,10 +46,9 @@
 }
 
 .checklist .check {
-  color: var(--gray-400);
-  font-weight: 700;
+  color: var(--peach);
   flex-shrink: 0;
-  margin-top: 1px;
+  margin-top: 3px;
 }
 
 /* Table */
@@ -143,7 +142,7 @@
 
 /* Formula Box */
 .formula-box {
-  background: var(--gray-900);
+  background: var(--ink);
   border-radius: var(--radius-lg);
   padding: 24px 28px;
   margin-bottom: 16px;
@@ -243,7 +242,7 @@
 }
 
 .schedule-card__day {
-  background: var(--gray-900);
+  background: var(--ink);
   color: var(--white);
   font-size: 0.8rem;
   font-weight: 600;
@@ -329,8 +328,14 @@
   color: var(--gray-700);
 }
 
-.skill-tags .check { color: var(--gray-400); font-weight: 700; }
-.skill-tags .dot { color: var(--gray-400); font-size: 1.2rem; line-height: 1; }
+.skill-tags li .check { color: var(--peach); flex-shrink: 0; }
+.skill-tags .dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--gray-400);
+  flex-shrink: 0;
+}
 
 .sidebar-nav {
   background: var(--gray-50);
@@ -348,13 +353,25 @@
 }
 
 .sidebar-nav a {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--gray-700);
   padding: 6px 0;
   border-bottom: 1px solid var(--gray-200);
   transition: color 0.15s;
+}
+
+.sidebar-nav a svg {
+  color: var(--gray-400);
+  transition: color 0.15s, transform 0.15s;
+}
+
+.sidebar-nav a:hover svg {
+  color: var(--gray-900);
+  transform: translateX(2px);
 }
 
 .sidebar-nav a:last-child { border-bottom: none; }
@@ -399,7 +416,7 @@
 
 /* Highlight card */
 .highlight-card {
-  background: var(--gray-900);
+  background: var(--ink);
   border-radius: var(--radius-lg);
   padding: 28px;
   color: var(--white);
@@ -448,14 +465,16 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: var(--peach);
-  color: #fff;
+  background: var(--white);
+  border: 1px solid var(--gray-300);
+  color: var(--gray-900);
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
 }
 
 .flow-step h4 { font-size: 0.9rem; color: var(--gray-900); margin-bottom: 4px; }

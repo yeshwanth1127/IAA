@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import CourseHero from '../components/CourseHero';
+import Reveal from '../components/Reveal';
+import { CheckIcon, ArrowRightIcon } from '../components/Icons';
 import './CoursePage.css';
 
 const sections = [
@@ -89,14 +91,14 @@ export default function TDS() {
               {/* TDS Lifecycle */}
               <section className="course-section">
                 <h2>TDS Lifecycle — 7 Steps</h2>
-                <div className="flow-steps">
+                <Reveal stagger className="flow-steps">
                   {lifecycle.map(s => (
                     <div key={s.step} className="flow-step">
                       <div className="flow-step__num">{s.step}</div>
                       <div><h4>{s.title}</h4><p>{s.desc}</p></div>
                     </div>
                   ))}
-                </div>
+                </Reveal>
               </section>
 
               {/* TDS Sections */}
@@ -259,7 +261,7 @@ export default function TDS() {
               <section className="course-section">
                 <h2>Common Mistakes by Accountants</h2>
                 <ul className="key-list">
-                  {mistakes.map(m => <li key={m}>✗ {m}</li>)}
+                  {mistakes.map(m => <li key={m}>{m}</li>)}
                 </ul>
               </section>
 
@@ -302,7 +304,7 @@ export default function TDS() {
                 <h4>Skills Gained</h4>
                 <ul className="skill-tags">
                   {['TAN Registration','TDS Deduction Workings','Challan 281 Preparation','TDS Return Filing','Form 16/16A Download','Form 26AS Reconciliation','Vendor Ledger Review','Handling TDS Notices'].map(s => (
-                    <li key={s}><span className="check">✓</span>{s}</li>
+                    <li key={s}><CheckIcon size={13} className="check" />{s}</li>
                   ))}
                 </ul>
               </div>
@@ -311,7 +313,7 @@ export default function TDS() {
                 <h4>Portals & Software</h4>
                 <ul className="skill-tags">
                   {['TRACES Portal','Income Tax Portal','Tally Prime','Excel'].map(s => (
-                    <li key={s}><span className="dot">·</span>{s}</li>
+                    <li key={s}><span className="dot" aria-hidden="true" />{s}</li>
                   ))}
                 </ul>
               </div>
@@ -331,9 +333,9 @@ export default function TDS() {
 
               <div className="sidebar-nav">
                 <p>Other Courses</p>
-                <Link to="/labour-laws">Labour Laws →</Link>
-                <Link to="/gst">GST →</Link>
-                <Link to="/bookkeeping">Bookkeeping →</Link>
+                <Link to="/labour-laws">Labour Laws <ArrowRightIcon size={13} /></Link>
+                <Link to="/gst">GST <ArrowRightIcon size={13} /></Link>
+                <Link to="/bookkeeping">Bookkeeping <ArrowRightIcon size={13} /></Link>
               </div>
             </aside>
 

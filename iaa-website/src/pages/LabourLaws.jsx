@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import CourseHero from '../components/CourseHero';
-import ScrollStack, { ScrollStackItem } from '../components/ScrollStack';
+import ModuleTimeline from '../components/ModuleTimeline';
+import { CheckIcon, ArrowRightIcon } from '../components/Icons';
 import './CoursePage.css';
 
 const objectives = [
@@ -82,7 +83,7 @@ export default function LabourLaws() {
                 <h2>Training Objectives</h2>
                 <p>At the end of this training, participants will be able to:</p>
                 <ul className="checklist">
-                  {objectives.map(o => <li key={o}><span className="check">✓</span>{o}</li>)}
+                  {objectives.map(o => <li key={o}><CheckIcon size={14} className="check" />{o}</li>)}
                 </ul>
               </section>
 
@@ -107,28 +108,7 @@ export default function LabourLaws() {
               {/* All 20 Modules */}
               <section className="course-section">
                 <h2>All 20 Modules</h2>
-                <ScrollStack
-                  className="window-mode"
-                  useWindowScroll={true}
-                  itemDistance={80}
-                  itemScale={0.018}
-                  itemStackDistance={20}
-                  stackPosition="18%"
-                  scaleEndPosition="12%"
-                  baseScale={0.9}
-                  blurAmount={0.6}
-                >
-                  {modules.map(m => (
-                    <ScrollStackItem key={m.n}>
-                      <div className="mod-stack-inner">
-                        <span className="mod-stack-num">{m.n}</span>
-                        <div className="mod-stack-divider" />
-                        <h4 className="mod-stack-title">{m.title}</h4>
-                        <p className="mod-stack-desc">{m.desc}</p>
-                      </div>
-                    </ScrollStackItem>
-                  ))}
-                </ScrollStack>
+                <ModuleTimeline modules={modules} />
               </section>
 
               {/* Contribution Rates */}
@@ -226,7 +206,7 @@ export default function LabourLaws() {
                 <h4>Skills Gained</h4>
                 <ul className="skill-tags">
                   {['PF Registration & ECR Filing','ESI Registration & Filing','Payroll Processing','Bonus Calculation','Gratuity Calculation','Professional Tax Compliance','Labour Law Audit Support','Payroll Verification','PF Reconciliation','ESI Reconciliation'].map(s => (
-                    <li key={s}><span className="check">✓</span>{s}</li>
+                    <li key={s}><CheckIcon size={13} className="check" />{s}</li>
                   ))}
                 </ul>
               </div>
@@ -235,16 +215,16 @@ export default function LabourLaws() {
                 <h4>Software Covered</h4>
                 <ul className="skill-tags">
                   {['Excel','Tally Prime','Payroll Software','PF Portal','ESI Portal','Income Tax Portal'].map(s => (
-                    <li key={s}><span className="dot">·</span>{s}</li>
+                    <li key={s}><span className="dot" aria-hidden="true" />{s}</li>
                   ))}
                 </ul>
               </div>
 
               <div className="sidebar-nav">
                 <p>Other Courses</p>
-                <Link to="/gst">GST →</Link>
-                <Link to="/tds">TDS →</Link>
-                <Link to="/bookkeeping">Bookkeeping →</Link>
+                <Link to="/gst">GST <ArrowRightIcon size={13} /></Link>
+                <Link to="/tds">TDS <ArrowRightIcon size={13} /></Link>
+                <Link to="/bookkeeping">Bookkeeping <ArrowRightIcon size={13} /></Link>
               </div>
             </aside>
 

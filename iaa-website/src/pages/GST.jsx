@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import CourseHero from '../components/CourseHero';
-import ScrollStack, { ScrollStackItem } from '../components/ScrollStack';
+import ModuleTimeline from '../components/ModuleTimeline';
+import Reveal from '../components/Reveal';
+import { CheckIcon, ArrowRightIcon } from '../components/Icons';
 import './CoursePage.css';
 
 const gstTypes = [
@@ -154,14 +156,14 @@ export default function GST() {
                 </div>
                 <div style={{marginTop:'24px'}}>
                   <h3 style={{marginBottom:'16px',fontSize:'1rem'}}>ITC Flow</h3>
-                  <div className="flow-steps">
+                  <Reveal stagger className="flow-steps">
                     {itcFlow.map(s => (
                       <div key={s.step} className="flow-step">
                         <div className="flow-step__num">{s.step}</div>
                         <div><h4>{s.title}</h4><p>{s.desc}</p></div>
                       </div>
                     ))}
-                  </div>
+                  </Reveal>
                 </div>
               </section>
 
@@ -183,28 +185,7 @@ export default function GST() {
               {/* All 13 Modules */}
               <section className="course-section">
                 <h2>All 13 Modules</h2>
-                <ScrollStack
-                  className="window-mode"
-                  useWindowScroll={true}
-                  itemDistance={80}
-                  itemScale={0.018}
-                  itemStackDistance={20}
-                  stackPosition="18%"
-                  scaleEndPosition="12%"
-                  baseScale={0.9}
-                  blurAmount={0.6}
-                >
-                  {[...modulesDay1, ...modulesDay2].map(m => (
-                    <ScrollStackItem key={m.n}>
-                      <div className="mod-stack-inner">
-                        <span className="mod-stack-num">{m.n}</span>
-                        <div className="mod-stack-divider" />
-                        <h4 className="mod-stack-title">{m.title}</h4>
-                        <p className="mod-stack-desc">{m.desc}</p>
-                      </div>
-                    </ScrollStackItem>
-                  ))}
-                </ScrollStack>
+                <ModuleTimeline modules={[...modulesDay1, ...modulesDay2]} />
               </section>
 
               {/* Compliance Cycle */}
@@ -264,7 +245,7 @@ export default function GST() {
                 <h4>Skills Gained</h4>
                 <ul className="skill-tags">
                   {['GST Registration & Amendments','GSTR-1 Filing (B2B/B2CS)','GSTR-3B Filing & Tax Payment','ITC Reconciliation (GSTR-2B)','E-Invoice (IRN Generation)','E-Way Bill Generation','Refund Application','Reply to GST Notices','GSTR-9 Annual Return'].map(s => (
-                    <li key={s}><span className="check">✓</span>{s}</li>
+                    <li key={s}><CheckIcon size={13} className="check" />{s}</li>
                   ))}
                 </ul>
               </div>
@@ -273,16 +254,16 @@ export default function GST() {
                 <h4>Portals Covered</h4>
                 <ul className="skill-tags">
                   {['GST Portal (gst.gov.in)','E-Invoice Portal','E-Way Bill Portal'].map(s => (
-                    <li key={s}><span className="dot">·</span>{s}</li>
+                    <li key={s}><span className="dot" aria-hidden="true" />{s}</li>
                   ))}
                 </ul>
               </div>
 
               <div className="sidebar-nav">
                 <p>Other Courses</p>
-                <Link to="/labour-laws">Labour Laws →</Link>
-                <Link to="/tds">TDS →</Link>
-                <Link to="/bookkeeping">Bookkeeping →</Link>
+                <Link to="/labour-laws">Labour Laws <ArrowRightIcon size={13} /></Link>
+                <Link to="/tds">TDS <ArrowRightIcon size={13} /></Link>
+                <Link to="/bookkeeping">Bookkeeping <ArrowRightIcon size={13} /></Link>
               </div>
             </aside>
 
